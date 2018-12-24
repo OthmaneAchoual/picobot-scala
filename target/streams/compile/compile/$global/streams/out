@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/othmaneachoual/Documents/sandbox/scala/new-project/src/main/scala/example/Hello.scala:60:25: value map is not a member of Any[0m
+[0m[[0m[31merror[0m] [0m[0m                char <- chars[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

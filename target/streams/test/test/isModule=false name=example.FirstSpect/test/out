@@ -1,0 +1,14 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mFirstSpect:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mtrue[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should be true[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mfactorial of 5[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should be 120[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mfactorial of 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should be 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m**x*[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should generate 8 combinations[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m**x*[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should contain Nxxx[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m**x*[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should contain NExS[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should generate 0 combinations[0m[0m
