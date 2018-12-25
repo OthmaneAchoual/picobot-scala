@@ -39,4 +39,34 @@ class FirstSpect extends FlatSpec {
             Game.allPossibleSurroundings("").length
         }
     }
+
+    "0 xxWx -> E 1" should "have state 1 as next state" in {
+        assertResult(1) {
+            Rule.parseRule("0 xxWx -> E 1").get.nextState
+        }
+    }
+
+    "-1 xxWx -> E 1" should "fail" in {
+        assertResult(None) {
+            Rule.parseRule("-1 xxWx -> E 1")
+        }
+    }
+
+    "1 xxWx -> E 100" should "fail" in {
+        assertResult(None) {
+            Rule.parseRule("1 xxWx -> E 100")
+        }
+    }
+
+    "aa xxWx -> E 1" should "fail" in {
+        assertResult(None) {
+            Rule.parseRule("aa xxWx -> E 1")
+        }
+    }
+
+    "1 xxwx -> e 1" should "succeed" in {
+        assertResult("E") {
+            Rule.parseRule("1 xxwx -> e 1").get.direction
+        }
+    }
 }

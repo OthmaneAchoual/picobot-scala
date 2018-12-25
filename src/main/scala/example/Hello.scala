@@ -4,6 +4,7 @@ import javax.swing._
 import scala.annotation.tailrec
 import scala.io._
 import scala.math._
+import scala.util._
 
 object MyMath {
     def product(x: Int, y: Int) = x * y
@@ -50,14 +51,12 @@ object Game {
     def parseRules(rules: List[String]): List[Option[Rule]] = rules.map(Rule.parseRule)
 
     def allPossibleSurroundings(wildcard: String): List[String] = {
-        // new Array[String](1 << wildcard.count(_ == '*'))
-       
         if (wildcard.length == 0) 
             List("")
         else
             for {
                 surrounding <- allPossibleSurroundings(wildcard.substring(1))
-                chars = if (wildcard.charAt(0) == '*') "x" + "SWEN".charAt(wildcard.length-1) else wildcard.charAt(0).toString
+                chars = if (wildcard(0) == '*') "x" + "SWEN"(wildcard.length-1) else wildcard(0).toString
                 char <- chars
             } yield char + surrounding 
     }
@@ -87,11 +86,33 @@ class Bot(val position: Position) {
     }
 }
 
-class Rule
+class Rule(val currentState: Int, val surroundings: String, val direction: String, val nextState: Int)
 
 object Rule {
     def parseRule(rule: String): Option[Rule] = {
-        Some(new Rule())
+        def validSurroundings(surroundings: String): Boolean = {
+            val validLength = surroundings.length == 4 
+            val validChars = surroundings.toList.zipWithIndex.map {
+                case (c, i) => c == 'X' || c == "NEWS"(i)
+            }.fold(true)(_ && _)
+
+            validLength && validChars
+        }
+        def validDirection(direction: String): Boolean = direction == "N" || direction == "E" || direction == "W" || direction == "S"
+
+        val ruleParts: Array[String] = rule.split("\\s+")
+        val parsed = for {
+            currentState <- Try(ruleParts(0).toInt).toOption
+            if (currentState >= 0 && currentState <= 99)
+            nextState <- Try(ruleParts(4).toInt).toOption
+            if (nextState >= 0 && nextState <= 99)
+            surroundings = ruleParts(1).toUpperCase
+            if (validSurroundings(surroundings))
+            direction = ruleParts(3).toUpperCase
+            if (validDirection(direction))
+        } yield new Rule(currentState, surroundings, direction, nextState)
+
+        parsed
     }
 }
 
